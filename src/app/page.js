@@ -1,113 +1,477 @@
+"use client";
 import Image from "next/image";
+import Link from "next/link";
+import React from "react";
+import { motion } from "framer-motion";
+import { LampContainer } from "../components/ui/lamp.jsx";
+import { twMerge } from "tailwind-merge";
+import { calsans } from "../fonts/calsans.js";
+import { TracingBeam } from "../components/ui/tracing-beam.jsx";
+import { CardBody, CardContainer, CardItem } from "../components/ui/3d-card";
+import { AnimatedTooltip } from "../components/ui/animated-tooltip";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <main className="flex min-h-screen flex-col items-center justify-between bg-slate-950">
+      <div className="w-full">
+        <LampContainer>
+          <motion.h1
+            initial={{ opacity: 0.5, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              delay: 0.3,
+              duration: 0.8,
+              ease: "easeInOut",
+            }}
+            className="mt-8 bg-gradient-to-br from-slate-300 to-slate-500 py-4 bg-clip-text text-center text-4xl font-medium tracking-tight text-transparent md:text-7xl"
           >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+            Kush Pai <br /> Software Developer
+          </motion.h1>
+        </LampContainer>
+      </div>
+      {/* <div className="w-full">
+        <TracingBeam className="px-6">
+          <div className="max-w-2xl mx-auto antialiased pt-4 relative">
+            {dummyContent.map((item, index) => (
+              <div key={`content-${index}`} className="mb-10">
+                <h2 className="bg-black text-white rounded-full text-sm w-fit px-4 py-1 mb-4">
+                  {item.badge}
+                </h2>
+
+                <p className="text-xl text-white mb-4">
+                  {item.title}
+                </p>
+
+                <div className="text-sm text-white prose prose-sm dark:prose-invert">
+                  {item?.image && (
+                    <Image
+                      src={item.image}
+                      alt="blog thumbnail"
+                      height="1000"
+                      width="1000"
+                      className="rounded-lg mb-10 object-cover"
+                    />
+                  )}
+                  {item.description}
+                </div>
+              </div>
+            ))}
+          </div>
+        </TracingBeam>
+      </div> */}
+
+      <div className="w-full mx-auto" style={{ maxWidth: '80%' }}>
+        <div className="flex flex-wrap -m-2">
+          <div className="w-full sm:w-1/2 lg:w-1/3 p-2">
+            <CardContainer className="inter-var">
+              <CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full h-auto rounded-xl p-6 border">
+                <CardItem translateZ="50" className="text-xl font-bold text-neutral-600 dark:text-white">
+                  {projects[0].name}
+                </CardItem>
+                <CardItem translateZ="100" className="w-full mt-4 mb-6">
+                  <Image
+                    src={projects[0].image}
+                    height="1000"
+                    width="1000"
+                    className="h-45 w-full object-cover rounded-xl group-hover/card:shadow-xl"
+                    alt="thumbnail"
+                  />
+                </CardItem>
+                <CardItem as="p" translateZ="60" className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300">
+                  {projects[0].description}
+                </CardItem>
+                <div className=" mb-10 mt-5">
+                  <CardItem translateZ={20} as={Link} href={projects[0].github} target="__blank" className="rounded-xl text-xs font-normal dark:text-white">
+                    Try now →
+                  </CardItem>
+                </div>
+
+                <div className="flex flex-row w-full">
+                  <AnimatedTooltip items={people} />
+                </div>
+              </CardBody>
+            </CardContainer>
+          </div>
+          <div className="w-full sm:w-1/2 lg:w-1/3 p-2">
+            <CardContainer className="inter-var">
+              <CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full h-auto rounded-xl p-6 border">
+                <CardItem translateZ="50" className="text-xl font-bold text-neutral-600 dark:text-white">
+                  {projects[1].name}
+                </CardItem>
+                <CardItem translateZ="100" className="w-full mt-4 mb-6">
+                  <Image
+                    src={projects[1].image}
+                    height="1000"
+                    width="1000"
+                    className="h-45 w-full object-cover rounded-xl group-hover/card:shadow-xl"
+                    alt="thumbnail"
+                  />
+                </CardItem>
+                <CardItem as="p" translateZ="60" className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300">
+                  {projects[1].description}
+                </CardItem>
+                <div className=" mb-10 mt-5">
+                  <CardItem translateZ={20} as={Link} href={projects[1].appstore} target="__blank" className="rounded-xl text-xs font-normal dark:text-white">
+                    Try now →
+                  </CardItem>
+                </div>
+
+                <div className="flex flex-row w-full">
+                  <AnimatedTooltip items={people} />
+                </div>
+              </CardBody>
+            </CardContainer>
+          </div>
+          <div className="w-full sm:w-1/2 lg:w-1/3 p-2">
+            <CardContainer className="inter-var">
+              <CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full h-auto rounded-xl p-6 border">
+                <CardItem translateZ="50" className="text-xl font-bold text-neutral-600 dark:text-white">
+                  {projects[2].name}
+                </CardItem>
+                <CardItem translateZ="100" className="w-full mt-4 mb-6">
+                  <Image
+                    src={projects[2].image}
+                    height="1000"
+                    width="1000"
+                    className="h-45 w-full object-cover rounded-xl group-hover/card:shadow-xl"
+                    alt="thumbnail"
+                  />
+                </CardItem>
+                <CardItem as="p" translateZ="60" className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300">
+                  {projects[2].description}
+                </CardItem>
+                <div className=" mb-10 mt-5">
+                  <CardItem translateZ={20} as={Link} href={projects[2].github} target="__blank" className="rounded-xl text-xs font-normal dark:text-white">
+                    Try now →
+                  </CardItem>
+                </div>
+
+                <div className="flex flex-row w-full">
+                  <AnimatedTooltip items={people} />
+                </div>
+              </CardBody>
+            </CardContainer>
+          </div>
+          <div className="w-full sm:w-1/2 lg:w-1/3 p-2">
+            <CardContainer className="inter-var">
+              <CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full h-auto rounded-xl p-6 border">
+                <CardItem translateZ="50" className="text-xl font-bold text-neutral-600 dark:text-white">
+                  {projects[3].name}
+                </CardItem>
+                <CardItem translateZ="100" className="w-full mt-4 mb-6">
+                  <Image
+                    src={projects[3].image}
+                    height="1000"
+                    width="1000"
+                    className="h-45 w-full object-cover rounded-xl group-hover/card:shadow-xl"
+                    alt="thumbnail"
+                  />
+                </CardItem>
+                <CardItem as="p" translateZ="60" className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300">
+                  {projects[3].description}
+                </CardItem>
+                <div className=" mb-10 mt-5">
+                  <CardItem translateZ={20} as={Link} href={projects[3].github} target="__blank" className="rounded-xl text-xs font-normal dark:text-white">
+                    Try now →
+                  </CardItem>
+                </div>
+
+                <div className="flex flex-row w-full">
+                  <AnimatedTooltip items={people} />
+                </div>
+              </CardBody>
+            </CardContainer>
+          </div>
+          <div className="w-full sm:w-1/2 lg:w-1/3 p-2">
+            <CardContainer className="inter-var">
+              <CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full h-auto rounded-xl p-6 border">
+                <CardItem translateZ="50" className="text-xl font-bold text-neutral-600 dark:text-white">
+                  {projects[4].name}
+                </CardItem>
+                <CardItem translateZ="100" className="w-full mt-4 mb-6">
+                  <Image
+                    src={projects[4].image}
+                    height="1000"
+                    width="1000"
+                    className="h-45 w-full object-cover rounded-xl group-hover/card:shadow-xl"
+                    alt="thumbnail"
+                  />
+                </CardItem>
+                <CardItem as="p" translateZ="60" className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300">
+                  {projects[4].description}
+                </CardItem>
+                <div className=" mb-10 mt-5">
+                  <CardItem translateZ={20} as={Link} href={projects[4].github} target="__blank" className="rounded-xl text-xs font-normal dark:text-white">
+                    Try now →
+                  </CardItem>
+                </div>
+
+                <div className="flex flex-row w-full">
+                  <AnimatedTooltip items={people} />
+                </div>
+              </CardBody>
+            </CardContainer>
+          </div>
+          <div className="w-full sm:w-1/2 lg:w-1/3 p-2">
+            <CardContainer className="inter-var">
+              <CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full h-auto rounded-xl p-6 border">
+                <CardItem translateZ="50" className="text-xl font-bold text-neutral-600 dark:text-white">
+                  {projects[5].name}
+                </CardItem>
+                <CardItem translateZ="100" className="w-full mt-4 mb-6">
+                  <Image
+                    src={projects[5].image}
+                    height="1000"
+                    width="1000"
+                    className="h-45 w-full object-cover rounded-xl group-hover/card:shadow-xl"
+                    alt="thumbnail"
+                  />
+                </CardItem>
+                <CardItem as="p" translateZ="60" className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300">
+                  {projects[5].description}
+                </CardItem>
+                <div className=" mb-10 mt-5">
+                  <CardItem translateZ={20} as={Link} href={projects[5].github} target="__blank" className="rounded-xl text-xs font-normal dark:text-white">
+                    Try now →
+                  </CardItem>
+                </div>
+
+                <div className="flex flex-row w-full">
+                  <AnimatedTooltip items={people} />
+                </div>
+              </CardBody>
+            </CardContainer>
+          </div>
+          <div className="w-full sm:w-1/2 lg:w-1/3 p-2">
+            <CardContainer className="inter-var">
+              <CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full h-auto rounded-xl p-6 border">
+                <CardItem translateZ="50" className="text-xl font-bold text-neutral-600 dark:text-white">
+                  {projects[6].name}
+                </CardItem>
+                <CardItem translateZ="100" className="w-full mt-4 mb-6">
+                  <Image
+                    src={projects[6].image}
+                    height="1000"
+                    width="1000"
+                    className="h-45 w-full object-cover rounded-xl group-hover/card:shadow-xl"
+                    alt="thumbnail"
+                  />
+                </CardItem>
+                <CardItem as="p" translateZ="60" className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300">
+                  {projects[6].description}
+                </CardItem>
+                <div className=" mb-10 mt-5">
+                  <CardItem translateZ={20} as={Link} href={projects[6].github} target="__blank" className="rounded-xl text-xs font-normal dark:text-white">
+                    Try now →
+                  </CardItem>
+                </div>
+
+                <div className="flex flex-row w-full">
+                  <AnimatedTooltip items={people} />
+                </div>
+              </CardBody>
+            </CardContainer>
+          </div>
         </div>
       </div>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
 
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
     </main>
   );
 }
+
+
+const dummyContent = [
+  {
+    title: "Lorem Ipsum Dolor Sit Amet",
+    description: (
+      <>
+        <p>
+          Sit duis est minim proident non nisi velit non consectetur. Esse
+          adipisicing laboris consectetur enim ipsum reprehenderit eu deserunt
+          Lorem ut aliqua anim do. Duis cupidatat qui irure cupidatat incididunt
+          incididunt enim magna id est qui sunt fugiat. Laboris do duis pariatur
+          fugiat Lorem aute sit ullamco. Qui deserunt non reprehenderit dolore
+          nisi velit exercitation Lorem qui do enim culpa. Aliqua eiusmod in
+          occaecat reprehenderit laborum nostrud fugiat voluptate do Lorem culpa
+          officia sint labore. Tempor consectetur excepteur ut fugiat veniam
+          commodo et labore dolore commodo pariatur.
+        </p>
+        <p>
+          Dolor minim irure ut Lorem proident. Ipsum do pariatur est ad ad
+          veniam in commodo id reprehenderit adipisicing. Proident duis
+          exercitation ad quis ex cupidatat cupidatat occaecat adipisicing.
+        </p>
+        <p>
+          Tempor quis dolor veniam quis dolor. Sit reprehenderit eiusmod
+          reprehenderit deserunt amet laborum consequat adipisicing officia qui
+          irure id sint adipisicing. Adipisicing fugiat aliqua nulla nostrud.
+          Amet culpa officia aliquip deserunt veniam deserunt officia
+          adipisicing aliquip proident officia sunt.
+        </p>
+      </>
+    ),
+    badge: "React",
+    image:
+      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=3540&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    title: "Lorem Ipsum Dolor Sit Amet",
+    description: (
+      <>
+        <p>
+          Ex irure dolore veniam ex velit non aute nisi labore ipsum occaecat
+          deserunt cupidatat aute. Enim cillum dolor et nulla sunt exercitation
+          non voluptate qui aliquip esse tempor. Ullamco ut sunt consectetur
+          sint qui qui do do qui do. Labore laborum culpa magna reprehenderit ea
+          velit id esse adipisicing deserunt amet dolore. Ipsum occaecat veniam
+          commodo proident aliqua id ad deserunt dolor aliquip duis veniam sunt.
+        </p>
+        <p>
+          In dolore veniam excepteur eu est et sunt velit. Ipsum sint esse
+          veniam fugiat esse qui sint ad sunt reprehenderit do qui proident
+          reprehenderit. Laborum exercitation aliqua reprehenderit ea sint
+          cillum ut mollit.
+        </p>
+      </>
+    ),
+    badge: "Changelog",
+    image:
+      "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&q=80&w=3540&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    title: "Lorem Ipsum Dolor Sit Amet",
+    description: (
+      <>
+        <p>
+          Ex irure dolore veniam ex velit non aute nisi labore ipsum occaecat
+          deserunt cupidatat aute. Enim cillum dolor et nulla sunt exercitation
+          non voluptate qui aliquip esse tempor. Ullamco ut sunt consectetur
+          sint qui qui do do qui do. Labore laborum culpa magna reprehenderit ea
+          velit id esse adipisicing deserunt amet dolore. Ipsum occaecat veniam
+          commodo proident aliqua id ad deserunt dolor aliquip duis veniam sunt.
+        </p>
+      </>
+    ),
+    badge: "Launch Week",
+    image:
+      "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&q=80&w=3506&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+];
+
+const projects = [
+  {
+    id: 0,
+    name: "Portfolio Website",
+    image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2560&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    description: "Responsive portfolio website developed using React, Tailwind CSS, and JavaScript. It showcases my personal projects and highlights software development skills.",
+    github: "https://github.com/kushXpai/Portfolio",
+    github2: "",
+    appstore: "",
+    playstore: "",
+  },
+  {
+    id: 1,
+    name: "KP FAST",
+    image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2560&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    description: "This is a cross-platform fitness app developed with Flutter and Firebase. It provides real-time data, notifications, and user-friendly interfaces, achieving a 55% increase in user engagement.",
+    github: "",
+    github2: "",
+    appstore: "https://apps.apple.com/in/app/kp-fast/id6505094329",
+    playstore: "",
+  },
+  {
+    id: 2,
+    name: "GTA Crimson Streets",
+    image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2560&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    description: "This is an immersive 3D open-world game developed with Unity and C#. It blends intricate missions and diverse gameplay, showcasing expertise in game development and storytelling.",
+    github: "",
+    github2: "",
+    appstore: "",
+    playstore: "",
+  },
+  {
+    id: 3,
+    name: "TinyURLer",
+    image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2560&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    description: "This is a URL shortening service developed with React and MongoDB. It optimizes user operations by streamlining URL management and enhancing efficiency.",
+    github: "https://github.com/kushXpai/url-shortener-software",
+    github2: "",
+    appstore: "",
+    playstore: "",
+  },
+  {
+    id: 4,
+    name: "Sudoku Solver",
+    image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2560&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    description: "This is an advanced Sudoku solver using backtracking algorithms. It significantly reduces problem-solving time, improving algorithm efficiency and performance.",
+    github: "https://github.com/kushXpai/sudoku-solver",
+    github2: "",
+    appstore: "",
+    playstore: "",
+  },
+  {
+    id: 5,
+    name: "Finchat",
+    image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2560&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    description: "This is a Python-based financial chatbot developed with Flask, Pandas, and SpaCy. It enables seamless natural language processing and financial data analysis, enhancing query handling and user interaction.",
+    github: "https://github.com/kushXpai/FinChat",
+    github2: "",
+    appstore: "",
+    playstore: "",
+  },
+  {
+    id: 6,
+    name: "Chef's Hat",
+    image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2560&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    description: "This is a recipe generator app developed with Flutter, Django, and GraphQL. It features ingredient-based suggestions, integrated payment options, and enhances community engagement.",
+    github: "https://github.com/kushXpai/chefshat-frontend",
+    github2: "https://github.com/kushXpai/chefshat-backend",
+    appstore: "",
+    playstore: "",
+  },
+]
+const people = [
+  {
+    id: 1,
+    name: "John Doe",
+    designation: "Software Engineer",
+    image:
+      "https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3387&q=80",
+  },
+  {
+    id: 2,
+    name: "Robert Johnson",
+    designation: "Product Manager",
+    image:
+      "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60",
+  },
+  {
+    id: 3,
+    name: "Jane Smith",
+    designation: "Data Scientist",
+    image:
+      "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60",
+  },
+  {
+    id: 4,
+    name: "Python",
+    designation: "Language",
+    image:
+      "https://github.com/kushXpai/Icons/blob/main/Languages/python.jpg?raw=true",
+  },
+  {
+    id: 5,
+    name: "Javascript",
+    designation: "Language",
+    image:
+      "https://github.com/kushXpai/Icons/blob/main/Languages/javascript.jpg?raw=true",
+  },
+  {
+    id: 6,
+    name: "C++",
+    designation: "Language",
+    image:
+      "https://github.com/kushXpai/Icons/blob/main/Languages/cplusplus.jpg?raw=true",
+  },
+];

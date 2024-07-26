@@ -39,7 +39,9 @@ export const StickyScroll = ({
     "linear-gradient(to bottom right, var(--cyan-500), var(--emerald-500))",
     "linear-gradient(to bottom right, var(--pink-500), var(--indigo-500))",
     "linear-gradient(to bottom right, var(--orange-500), var(--yellow-500))",
+    "linear-gradient(to bottom right, var(--purple-500), var(--red-500))",
   ];
+  
 
   const [backgroundGradient, setBackgroundGradient] = useState(linearGradients[0]);
 
@@ -75,9 +77,15 @@ export const StickyScroll = ({
                 animate={{
                   opacity: activeCard === index ? 1 : 0.3,
                 }}
-                className="text-kg text-slate-300 max-w-sm mt-10">
-                {item.description}
+                className="text-lg text-slate-300 max-w-sm mt-10"
+              >
+                {item.description.split("   ").map((line, i) => (
+                  <span key={i} className="block">
+                    {line}
+                  </span>
+                ))}
               </motion.p>
+
             </div>
           ))}
           <div className="h-40" />

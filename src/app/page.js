@@ -242,71 +242,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="xl:hidden lg:hidden md:hidden sm:flex">
-        <div style={{ transform: 'scale(0.7)', transformOrigin: 'center' }}>
-          <BackgroundGradient className="rounded-[22px] max-w-sm p-4 bg-white dark:bg-zinc-900">
-            <Image
-              src={currentProjects[2]['image']}
-              alt="jordans"
-              height="400"
-              width="400"
-              className="object-contain"
-            />
-            <p className="text-base sm:text-xl text-black mt-4 mb-2 dark:text-neutral-200">
-              {currentProjects[2]['name']}
-            </p>
-
-            <p className="text-sm text-neutral-600 dark:text-neutral-400">
-              {currentProjects[2]['description']}
-            </p>
-            <div className="flex flex-row w-full pt-12">
-              <AnimatedTooltip items={currentProjectTechStack[2]} />
-            </div>
-          </BackgroundGradient>
-        </div>
-        <div style={{ transform: 'scale(0.7)', transformOrigin: 'center' }}>
-          <BackgroundGradient className="rounded-[22px] max-w-sm p-4 bg-white dark:bg-zinc-900">
-            <Image
-              src={currentProjects[1]['image']}
-              alt="jordans"
-              height="400"
-              width="400"
-              className="object-contain"
-            />
-            <p className="text-base sm:text-xl text-black mt-4 mb-2 dark:text-neutral-200">
-              {currentProjects[1]['name']}
-            </p>
-
-            <p className="text-sm text-neutral-600 dark:text-neutral-400">
-              {currentProjects[1]['description']}
-            </p>
-            <div className="flex flex-row w-full pt-12">
-              <AnimatedTooltip items={currentProjectTechStack[1]} />
-            </div>
-          </BackgroundGradient>
-        </div>
-        <div style={{ transform: 'scale(0.7)', transformOrigin: 'center' }}>
-          <BackgroundGradient className="rounded-[22px] max-w-sm p-4 bg-white dark:bg-zinc-900">
-            <Image
-              src={currentProjects[0]['image']}
-              alt="jordans"
-              height="400"
-              width="400"
-              className="object-contain"
-            />
-            <p className="text-base sm:text-xl text-black mt-4 mb-2 dark:text-neutral-200">
-              {currentProjects[0]['name']}
-            </p>
-
-            <p className="text-sm text-neutral-600 dark:text-neutral-400">
-              {currentProjects[0]['description']}
-            </p>
-            <div className="flex flex-row w-full pt-12">
-              <AnimatedTooltip items={currentProjectTechStack[0]} />
-            </div>
-          </BackgroundGradient>
-        </div>
-      </div>
+      
 
       <div className="pb-24"></div>
 
@@ -676,48 +612,51 @@ export default function Home() {
 
 const aboutme = [
   {
-    title: "Collaborative Editing",
+    title: "Who am I?",
     description:
-      "Work together in real time with your team, clients, and stakeholders. Collaborate on documents, share ideas, and make decisions quickly. With our platform, you can streamline your workflow and increase productivity.",
+      "Graduate with a strong aptitude for learning and a passion for acquiring new skills, seeking a full-time role to expand my knowledge base and contribute to innovative projects.",
     content: (
       <div className="h-full w-full bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] flex items-center justify-center text-white">
-        Collaborative Editing
+        Who am I?
       </div>
     ),
   },
   {
-    title: "Real time changes",
+    title: "Educational Qualifications",
     description:
-      "See changes as they happen. With our platform, you can track every modification in real time. No more confusion about the latest version of your project. Say goodbye to the chaos of version control and embrace the simplicity of real-time updates.",
+      "Bachelor of Science in Computer Science: 8.36 CGPA   Intermediate: 93.17%   Matriculation: 90.20%",
     content: (
-      <div className="h-full w-full  flex items-center justify-center text-white">
-        <Image
-          src="/linear.webp"
-          width={300}
-          height={300}
-          className="h-full w-full object-cover"
-          alt="linear board demo"
-        />
+      // <div className="h-full w-full  flex items-center justify-center text-white">
+      //   <Image
+      //     src="/linear.webp"
+      //     width={300}
+      //     height={300}
+      //     className="h-full w-full object-cover"
+      //     alt="linear board demo"
+      //   />
+      // </div>
+      <div className="h-full w-full bg-[linear-gradient(to bottom right, var(--pink-500), var(--indigo-500))] flex items-center justify-center text-white">
+        Educational Qualifications
       </div>
     ),
   },
   {
-    title: "Version control",
+    title: "Technical Skills",
     description:
-      "Experience real-time updates and never stress about version control again. Our platform ensures that you're always working on the most recent version of your project, eliminating the need for constant manual updates. Stay in the loop, keep your team aligned, and maintain the flow of your work without any interruptions.",
+      "Languages: Python, Javascript, Java, C, C#, Swift, FLTK.   Python Librabries: Numpy, Pandas, Matplotlib, BeautifulSoup, MySQL Scipy, Plotly, Tensorflow.   Technologies: GraphQL, Django, Node, Kubernetes, Docker, Firebase, Flutter, Bootstrap, Git, Wireshark.",
     content: (
-      <div className="h-full w-full bg-[linear-gradient(to_bottom_right,var(--orange-500),var(--yellow-500))] flex items-center justify-center text-white">
-        Version control
+      <div className="h-full w-full bg-[linear-gradient(to bottom right, var(--orange-500), var(--yellow-500))] flex items-center justify-center text-white">
+        Technical Skills
       </div>
     ),
   },
   {
-    title: "Running out of content",
+    title: "Extracurricular Achievements",
     description:
-      "Experience real-time updates and never stress about version control again. Our platform ensures that you're always working on the most recent version of your project, eliminating the need for constant manual updates. Stay in the loop, keep your team aligned, and maintain the flow of your work without any interruptions.",
+      "National Level Weightlifter, 2 time Maharashtra State Champion   Captain of School Baseball team: 5 concecutive years Baseball Divisions Champion",
     content: (
-      <div className="h-full w-full bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] flex items-center justify-center text-white">
-        Running out of content
+      <div className="h-full w-full bg-[linear-gradient(to bottom right, var(--purple-500), var(--red-500))] flex items-center justify-center text-white">
+        Achievements
       </div>
     ),
   },

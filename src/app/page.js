@@ -13,6 +13,7 @@ import css from "styled-jsx/css";
 import { useOutsideClick } from "../components/hooks/use-outside-clicks.js";
 import { BackgroundGradient } from "../components/ui/background-gradient";
 import { IconAppWindow } from '@tabler/icons-react';
+import { StickyScroll } from "../components/ui/sticky-scroll-reveal.jsx";
 
 export default function Home() {
 
@@ -57,6 +58,7 @@ export default function Home() {
           </motion.h1>
         </LampContainer>
       </div>
+
       {/* <div className="w-full">
         <TracingBeam className="px-6">
           <div className="max-w-2xl mx-auto antialiased pt-4 relative">
@@ -87,6 +89,22 @@ export default function Home() {
           </div>
         </TracingBeam>
       </div> */}
+
+      <p className="text-3xl bg-clip-text text-transparent drop-shadow-2xl bg-gradient-to-b from-white/80 to-white/20">
+        About Me
+      </p>
+      <div className="pb-16"></div>
+
+      <div className="w-full px-10">
+        <StickyScroll content={aboutme} />
+      </div>
+
+      <div className="pb-24"></div>
+
+      <p className="text-3xl bg-clip-text text-transparent drop-shadow-2xl bg-gradient-to-b from-white/80 to-white/20">
+        Current Projects
+      </p>
+
 
       <div className="hidden xl:flex lg:flex flex-row">
         <div style={{ transform: 'scale(0.7)', transformOrigin: 'center' }}>
@@ -507,6 +525,11 @@ export default function Home() {
         </div>
       </div> */}
 
+      <p className="text-3xl bg-clip-text text-transparent drop-shadow-2xl bg-gradient-to-b from-white/80 to-white/20">
+        Past Projects
+      </p>
+      <div className="pb-16"></div>
+
       <>
         <AnimatePresence>
           {active && typeof active === "object" && (
@@ -578,7 +601,7 @@ export default function Home() {
                       layoutId={`button-${active.title}-${id}`}
                       href={active.ctaLink}
                       target="_blank"
-                      className="px-4 py-3 text-sm rounded-full font-bold bg-green-500 text-white"
+                      className="px-4 py-3 text-sm rounded-full font-bold bg-cyan-500 text-white"
                     >
                       {active.ctaText}
                     </motion.a>
@@ -622,13 +645,13 @@ export default function Home() {
                 <div className="">
                   <motion.h3
                     layoutId={`title-${card.title}-${id}`}
-                    className="font-medium text-neutral-800 dark:text-neutral-200 text-center md:text-left"
+                    className="font-medium text-neutral-400 dark:text-neutral-200 text-center md:text-left"
                   >
                     {card.title}
                   </motion.h3>
                   <motion.p
                     layoutId={`description-${card.description}-${id}`}
-                    className="text-neutral-600 dark:text-neutral-400 text-center md:text-left"
+                    className="text-neutral-700 dark:text-neutral-400 text-center md:text-left"
                   >
                     {card.description}
                   </motion.p>
@@ -636,7 +659,7 @@ export default function Home() {
               </div>
               <motion.button
                 layoutId={`button-${card.title}-${id}`}
-                className="px-4 py-2 text-sm rounded-full font-bold bg-gray-100 hover:bg-green-500 hover:text-white text-black mt-4 md:mt-0"
+                className="px-4 py-2 text-sm rounded-full font-bold bg-gray-100 hover:bg-cyan-500 hover:text-white text-black mt-4 md:mt-0"
               >
                 {card.ctaText}
               </motion.button>
@@ -650,6 +673,55 @@ export default function Home() {
   );
 }
 
+
+const aboutme = [
+  {
+    title: "Collaborative Editing",
+    description:
+      "Work together in real time with your team, clients, and stakeholders. Collaborate on documents, share ideas, and make decisions quickly. With our platform, you can streamline your workflow and increase productivity.",
+    content: (
+      <div className="h-full w-full bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] flex items-center justify-center text-white">
+        Collaborative Editing
+      </div>
+    ),
+  },
+  {
+    title: "Real time changes",
+    description:
+      "See changes as they happen. With our platform, you can track every modification in real time. No more confusion about the latest version of your project. Say goodbye to the chaos of version control and embrace the simplicity of real-time updates.",
+    content: (
+      <div className="h-full w-full  flex items-center justify-center text-white">
+        <Image
+          src="/linear.webp"
+          width={300}
+          height={300}
+          className="h-full w-full object-cover"
+          alt="linear board demo"
+        />
+      </div>
+    ),
+  },
+  {
+    title: "Version control",
+    description:
+      "Experience real-time updates and never stress about version control again. Our platform ensures that you're always working on the most recent version of your project, eliminating the need for constant manual updates. Stay in the loop, keep your team aligned, and maintain the flow of your work without any interruptions.",
+    content: (
+      <div className="h-full w-full bg-[linear-gradient(to_bottom_right,var(--orange-500),var(--yellow-500))] flex items-center justify-center text-white">
+        Version control
+      </div>
+    ),
+  },
+  {
+    title: "Running out of content",
+    description:
+      "Experience real-time updates and never stress about version control again. Our platform ensures that you're always working on the most recent version of your project, eliminating the need for constant manual updates. Stay in the loop, keep your team aligned, and maintain the flow of your work without any interruptions.",
+    content: (
+      <div className="h-full w-full bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] flex items-center justify-center text-white">
+        Running out of content
+      </div>
+    ),
+  },
+];
 
 const dummyContent = [
   {
